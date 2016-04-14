@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertGreaterThan;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
@@ -16,6 +17,7 @@ import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Comparator;
 
 import org.junit.Assert;
 import org.junit.Assert.ThrowingRunnable;
@@ -752,5 +754,38 @@ public class AssertionTest {
                 throw t;
             }
         };
+    }
+    
+    @Test
+    public void greaterThan() {
+        assertGreaterThan("cba", "abc", new Comparator<String>() {
+            public int compare(String o1, String o2) {
+                return o1.compareTo(o2);
+            }
+        });
+
+        assertGreaterThan((byte) 2, (byte) 1, new Comparator<Byte>() {
+            public int compare(Byte o1, Byte o2) {
+                return o1.compareTo(o2);
+            }
+        });
+        
+        assertGreaterThan('b', 'a', new Comparator<Character>() {
+            public int compare(Character o1, Character o2) {
+                return o1.compareTo(o2);
+            }
+        });
+        
+        assertGreaterThan(2, 1, new Comparator<Integer>() {
+            public int compare(Integer o1, Integer o2) {
+                return o1.compareTo(o2);
+            }
+        }); // int by default, cast is unnecessary
+        
+        assertGreaterThan(1.1d, 1.0d, new Comparator<Double>() {
+            public int compare(Double o1, Double o2) {
+                return o1.compareTo(o2);
+            }
+        });
     }
 }
