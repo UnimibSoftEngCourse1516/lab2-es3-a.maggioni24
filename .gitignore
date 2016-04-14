@@ -11,3 +11,6 @@ MaxCore.max
 out
 java.hprof.txt
 .gitattributes
+/.settings/
+/.classpath
+/.project
