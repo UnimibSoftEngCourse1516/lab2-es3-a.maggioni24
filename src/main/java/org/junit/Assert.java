@@ -1025,4 +1025,22 @@ public class Assert {
             fail("o1 is not greater than o2");
         }
     }
+    
+    public static void assertGreaterThan(int x, int y) {
+        if (x <= y) {
+            fail("assertGreaterThan fail!");
+        }
+    }
+
+    public static void assertGreaterThan(double x, double y) {
+        if (x <= y) {
+            fail("assertGreaterThan fail!");
+        }
+    }
+
+    public static void assertGreaterThan(char x, char y) {
+        if (x <= y) {
+            fail("assertGreaterThan fail!");
+        }
+    }
 }

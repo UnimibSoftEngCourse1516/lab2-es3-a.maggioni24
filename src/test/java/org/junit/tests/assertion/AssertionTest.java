@@ -787,5 +787,9 @@ public class AssertionTest {
                 return o1.compareTo(o2);
             }
         });
+        
+        assertGreaterThan('b', 'a');
+        assertGreaterThan(2, 1); // int by default, cast is unnecessary
+        assertGreaterThan(1.1d, 1.0d);
     }
 }
